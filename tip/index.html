@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="form-title">Project Details</h2>
+        <form>
+            <div class="form-group">
+                <label for="project-name">Project Name</label>
+                <input type="text" id="project-name" placeholder="Enter your project name" required>
+            </div>
+            <div class="form-group">
+                <label for="tech-stack">Tech Stack</label>
+                <!-- Tech Stack input field -->
+                <input type="text" id="tech-stack" placeholder="Select Tech Stack" readonly required>
+                <div class="dropdown">
+                    <button class="dropdown-btn" type="button" id="tech-stack-btn">Choose Tech Stack</button>
+                    <div class="dropdown-content" id="tech-stack-options">
+                        <label><input type="checkbox" value="HTML"> HTML</label>
+                        <label><input type="checkbox" value="CSS"> CSS</label>
+                        <label><input type="checkbox" value="JavaScript"> JavaScript</label>
+                        <label><input type="checkbox" value="React"> React</label>
+                        <label><input type="checkbox" value="Node.js"> Node.js</label>
+                        <label><input type="checkbox" value="Next.js"> Next.js</label>
+                        <label><input type="checkbox" value="Express.js"> Express.js</label>
+                        <label><input type="checkbox" value="Spring Boot"> Spring Boot</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" rows="4" placeholder="Provide a brief description of the project" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <div class="status-options">
+                    <label>
+                        <input type="radio" name="status" value="started" required> Started
+                    </label>
+                    <label>
+                        <input type="radio" name="status" value="ongoing"> Ongoing
+                    </label>
+                    <label>
+                        <input type="radio" name="status" value="completed"> Completed
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="target-date">Target Date to Complete</label>
+                <input type="date" id="target-date" required>
+            </div>
+            <div class="form-group">
+                <label for="github-repo">GitHub Repo Link</label>
+                <input type="url" id="github-repo" placeholder="https://github.com/your-repo" required>
+            </div>
+            <button type="submit" class="submit-btn" onclick="window.location.href='../sred.html'">Submit</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #151D1E;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .form-container {
+    background-color: #363F41;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  input[type="url"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2C3335;
+    color: #FFFFFF;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .status-options label {
+    display: inline-block;
+    margin-right: 10px;
+    color: #FFFFFF;
+  }
+  
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  .submit-btn {
+    background-color: #007bff;
+    color: #FFFFFF;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  input:focus,
+  textarea:focus {
+    outline: none;
+    background-color: #3F4A4B;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .dropdown-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2C3335;
+    color: #FFFFFF;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #363F41;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .dropdown-content label {
+    color: #FFFFFF;
+    padding: 5px 0;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .dropdown-content label input {
+    margin-right: 5px;
+  }
+  
+  .dropdown-btn:focus + .dropdown-content,
+  .dropdown-content:hover {
+    display: block;
+  }
+  
+  @media (max-width: 420px) {
+    .form-container {
+        width: 90%;
+    }
+  }

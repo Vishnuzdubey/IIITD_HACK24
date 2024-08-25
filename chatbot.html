@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>EduFlex</title>
+  <link rel="icon" href="untitled.png" type="image/icon type" />
+  <link rel="stylesheet" href="/chatbot.css" />
+
+</head>
+
+<body onload="loaderfunc">
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+  <nav>
+    <div class="logo">
+      <a href="#">EduFlex</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="about.html">GitHub</a></li>
+      <!-- <li><a href="#">Services</a></li> -->
+      <li>
+        <a href="https://www.instagram.com/abhijeet_gupta_21/">LinkedIn</a>
+      </li>
+      <li><a href="contac.html">Twitter</a></li>
+    </ul>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+
+  <div class="chat-container">
+    <div class="header">
+      <h2 style=" color:#201F20;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+              'Lucida Sans', Arial, sans-serif;
+          ">
+        EduFlex
+      </h2>
+    </div>
+    <div class="chat-area">
+      <ul class="messages"></ul>
+    </div>
+    <div class="input-area" style="color:#200E11">
+      <input type="text" placeholder="Enter your message" id="query" class="tapori" />
+      <button id="sub" onclick="newDel()">Send</button>
+      <button onclick="cls()">Clear</button>
+    </div>
+  </div>
+  <!-- <div class="foot"> -->
+  <br>
+  <br>
+  <hr>
+  <!-- </div> -->
+  <script>
+    // var name1 = prompt("Hello Buddy! I want you to enter your name please");
+    // alert(name1);
+    // });
+    // alert("Hello ! Nice to meet yout " + name1);
+
+    function cls() {
+      var c = document.querySelector(".messages");
+      c.innerHTML = "";
+    }
+
+    function newDel() {
+      let l1 = document.createElement("li");
+      var c = document.querySelector(".messages");
+      var ele = document.querySelector("#query").value;
+      l1.innerHTML = `<div class="us" style="color:white">${ele}</div><br><hr>`;
+      c.appendChild(l1);
+
+      let l2 = document.createElement("li");
+
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "216d9c853bmshda45fc03d6c77b6p115a2djsnd14e46e332ef",
+          "X-RapidAPI-Host": "ai-chatbot.p.rapidapi.com",
+        },
+      };
+      var msg = `https://ai-chatbot.p.rapidapi.com/chat/free?message=${ele}&uid=user1`;
+
+      fetch(msg, options)
+        // .then(response => response.json())
+        .then((respone) => {
+          return respone.json();
+        })
+        .then((response) => {
+          // console.log(response);
+          l2.innerHTML = `<div class="aq" style="color:white">${response["chatbot"]["response"]}</div><br><hr>`;
+        })
+        .catch((err) => console.error(err));
+
+      c.appendChild(l2);
+
+      var t = document.querySelector(".tapori");
+      t.value = "";
+    }
+    function loaderfunc() {
+      var element = document.querySelector(".loader-wrapper");
+      element.style.display = "none";
+    }
+
+    var input = document.getElementById("query");
+    input.addEventListener("keypress", function (event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("sub").click();
+      }
+    });
+  </script>
+</body>
+
+</html>

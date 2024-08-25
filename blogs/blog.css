@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 240 10% 3.9%;
+        --foreground: 200 100% 99%;
+        --card: 240 10% 3.9%;
+        --card-foreground: 200 100% 99%;
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 200 100% 99%;
+        --primary: 144 100% 70%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 88 100% 85%;
+        --secondary-foreground: 240 10% 3.9%;
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+        --accent: 240 4.8% 95.9%;
+        --accent-foreground: 240 10% 3.9%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --ring: 240 5.9% 10%;
+        --radius: 0.5rem;
+    }
+    .dark {
+        --background: 240 10% 3.9%;
+        --foreground: 200 100% 99%;
+        --card: 240 10% 3.9%;
+        --card-foreground: 200 100% 99%;
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 200 100% 99%;
+        --primary: 200 100% 99%;
+        --primary-foreground: 144 100% 70%;
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 200 100% 99%;
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 200 100% 99%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 200 100% 99%;
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 240 4.9% 83.9%;
+    }
+}
+
+.app-body {
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(min-content, 400px);
+    column-gap: 4rem;
+    padding-top: 2.5rem;
+
+    @media (max-width: 1200px) {
+        grid-template-columns: 1fr;
+        & > * {
+            margin-bottom: 3.5rem;
+        }
+    }
+}
+
+.app-body-navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (max-width: 1200px) {
+        display: none;
+    }
+}
+
+.app-body-sidebar {
+}
+
+.footer {
+    margin-top: auto;
+    top: 83%;
+    position: absolute;
+    h1 {
+        font-size: 1.5rem;
+        line-height: 1.125;
+        display: flex;
+        align-items: flex-start;
+        small {
+            font-size: 0.5em;
+            margin-left: 0.25em;
+        }
+    }
+
+    div {
+        border-top: 1px solid var(--c-gray-600);
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        font-size: 0.75rem;
+        color: var(--c-text-tertiary);
+    }
+}
+
+nav.navigation {
+    width: 154px;
+}

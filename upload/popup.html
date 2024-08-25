@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Upload UI</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Add Video Details</h2>
+        </div>
+        <div class="content">
+            <div class="details-section">
+                <h3>Details</h3>
+                <label for="title">Title (required)</label>
+                <input type="text" id="title" value="Video Title">
+                <label for="description">Video URL</label>
+                <textarea id="description" placeholder="Add URL of the Video here" required></textarea>
+            </div>
+            <div class="video-preview-section">
+                <div class="video-preview">
+                    <iframe width="300" height="170" src="https://www.youtube.com/embed/U0g7ZE7JKgI" frameborder="0"
+                        allowfullscreen></iframe>
+                </div>
+                <p>Filename: video.mp4</p>
+            </div>
+            <div class="thumbnail-section">
+                <h3>Thumbnail</h3>
+                <button>Upload file</button>
+                <button>Auto-generated</button>
+                <button>Test and compare</button>
+            </div>
+            <div class="playlists-section">
+                <h3>Playlists</h3>
+                <select>
+                    <option>Select</option>
+                    <option>Build a Canva Clone</option>
+                    <option>Build a SaaS Application</option>
+                    <option>Twitch Clone</option>
+                    <option>Prisma & Free Database</option>
+                    <option>Next Auth v5</option>
+                    <!-- Add playlist options here -->
+                </select>
+            </div>
+            <div class="footer">
+                <button type="submit" value="Next" onclick="alert('Enter video URL Please')">Next</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

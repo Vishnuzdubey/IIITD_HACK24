@@ -1,0 +1,462 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body,
+html {
+    color: white;
+    background-color: #151D1E;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
+aside {
+    width: 200px;
+    /* background-color: #f0f0f0; */
+    background-color: #363F41;
+    color: white;
+    padding: 20px;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="search"] {
+    padding: 11px;
+    width: 220px;
+}
+
+#courseNav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+    font-size: large;
+}
+
+#courseNav a {
+    text-decoration: none;
+    color: #333;
+}
+
+#courseNav a.active {
+    color: #007bff;
+}
+
+#courseGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.course-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.course-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background-color: #ddd;
+}
+
+footer {
+    bottom: 0%;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    /* background-color: #f0f0f0; */
+    background-color: #172628;
+}
+
+/* Ensure the main content is blurred and colored background is applied */
+.blurred {
+    position: relative;
+    filter: blur(10px);
+    /* Adjust the blur intensity as needed */
+    transition: filter 0.3s ease-in-out;
+}
+
+.blurred::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(23, 38, 40, 0.7);
+    /* Updated color to #172628 with transparency */
+    z-index: 9998;
+    /* Just below the popup */
+    pointer-events: none;
+    /* Allows clicks to pass through */
+}
+
+/* Popup style */
+.popup {
+    z-index: 9999;
+    /* Ensure it's above everything */
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #151D1E;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    position: relative;
+    z-index: 10000;
+    /* Ensure it's above the blurred background */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input {
+    width: 92%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5cb85c;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+form button[type="button"] {
+    background-color: #0275d8;
+}
+
+.ag-format-container {
+    width: 1142px;
+    margin: 0 auto;
+}
+
+
+.ag-courses_box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    padding: 50px 0;
+}
+
+.ag-courses_item {
+    -ms-flex-preferred-size: calc(33.33333% - 30px);
+    flex-basis: calc(33.33333% - 30px);
+
+    margin: 0 15px 30px;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+}
+
+.ag-courses-item_link {
+    display: block;
+    padding: 30px 20px;
+    background-color: #121212;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.ag-courses-item_link:hover,
+.ag-courses-item_link:hover .ag-courses-item_date {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.ag-courses-item_link:hover .ag-courses-item_bg {
+    -webkit-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+}
+
+.ag-courses-item_title {
+    min-height: 87px;
+    margin: 0 0 25px;
+
+    overflow: hidden;
+
+    font-weight: bold;
+    font-size: 30px;
+    color: #FFF;
+
+    z-index: 2;
+    position: relative;
+}
+
+.ag-courses-item_date-box {
+    font-size: 18px;
+    color: #FFF;
+
+    z-index: 2;
+    position: relative;
+}
+
+.ag-courses-item_date {
+    font-weight: bold;
+    color: #f9b234;
+
+    -webkit-transition: color .5s ease;
+    -o-transition: color .5s ease;
+    transition: color .5s ease
+}
+
+.ag-courses-item_bg {
+    height: 128px;
+    width: 128px;
+    background-color: #f9b234;
+
+    z-index: 1;
+    position: absolute;
+    top: -75px;
+    right: -75px;
+
+    border-radius: 50%;
+
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+    background-color: #3ecd5e;
+}
+
+.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+    background-color: #e44002;
+}
+
+.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+    background-color: #952aff;
+}
+
+.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+    background-color: #cd3e94;
+}
+
+.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+    background-color: #4c49ea;
+}
+
+
+
+@media only screen and (max-width: 979px) {
+    .ag-courses_item {
+        -ms-flex-preferred-size: calc(50% - 30px);
+        flex-basis: calc(50% - 30px);
+    }
+
+    .ag-courses-item_title {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .ag-format-container {
+        width: 96%;
+    }
+
+}
+
+@media only screen and (max-width: 639px) {
+    .ag-courses_item {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    }
+
+    .ag-courses-item_title {
+        min-height: 72px;
+        line-height: 1;
+
+        font-size: 24px;
+    }
+
+    .ag-courses-item_link {
+        padding: 22px 40px;
+    }
+
+    .ag-courses-item_date-box {
+        font-size: 16px;
+    }
+}
+
+#asideMenu {
+    background-color: #181818;
+    color: #fff;
+    border-right: 1px solid #333;
+    padding-top: 20px;
+    transition: transform 0.3s ease;
+    transform: translateX(-200px);
+}
+
+#asideMenu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* #asideMenu ul li { */
+/* padding: 30px 40px; */
+/* } */
+
+#asideMenu ul li a {
+    padding: 30px 40px;
+    font-size: 19px;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+#asideMenu ul li a:hover {
+    background-color: #333;
+    border-radius: 35px;
+}
+
+#asideMenu ul li a .icon {
+    margin-right: 10px;
+}
+
+#asideMenu.show {
+    transform: translateX(0);
+}
+
+@media (min-width: 768px) {
+    #asideMenu {
+        transform: translateX(0);
+    }
+
+    #menuToggle {
+        display: none;
+    }
+}
+
+/* Basic styling for the form pop-up */
+#formPopup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #444;
+    background-color: #fff;
+    padding: 20px;
+    z-index: 1000;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#formPopup h2 {
+    margin-top: 0;
+}
+
+#formPopup label {
+    display: block;
+    margin-top: 10px;
+}
+
+#formPopup input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+#formPopup button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+#formPopup .btn-cancel {
+    background-color: #f44336;
+    color: white;
+}
+
+#formPopup .btn-add {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* chatbot pop */
+
+#openChatBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

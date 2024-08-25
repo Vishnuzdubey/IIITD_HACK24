@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build an LMS Platform</title>
+    <link rel="stylesheet" href="vdo.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: #1E1E1E;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #181717;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+        }
+
+        .sidebar .menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar .menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar .menu input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .main-content h1,
+        .main-content h2 {
+            color: #F1F1F1;
+        }
+
+        .placeholder-image {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background-color: #333;
+            margin-bottom: 20px;
+        }
+
+        .complete-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .add-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .prev-btn {
+            background-color: #E62E4F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .todo {
+            background-color: #2D2D2D;
+            padding: 20px;
+            margin-left: 20px;
+            width: 300px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .todo h2 {
+            margin-top: 0;
+        }
+
+        .todo .row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .todo .row input {
+            flex: 1;
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .todo .row button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .note-timestamp {
+            cursor: pointer;
+            color: #00ff48;
+            text-decoration: none;
+        }
+
+        div.mb-4 {
+            /* border: 2px solid #00ff48; */
+            text-align: center;
+            background-color: #F1F1F1;
+            color: black;
+            border-radius: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Node JS with Prisma ORM with databases</h2>
+            <p class="progress">0% Complete</p>
+            <ul class="menu">
+                <li><input type="checkbox" id="intro" checked> <label for="intro">Node Js with Prisma ORM</label></li>
+                <li><input type="checkbox" id="environment"> <label for="environment">Prism Schema & Clients</label>
+                </li>
+                <li><input type="checkbox" id="folders"> <label for="folders">API Development</label></li>
+                <li><input type="checkbox" id="auth"> <label for="auth">API Development with prisma</label></li>
+                <li><input type="checkbox" id="layout"> <label for="layout">API Development with prisma and
+                        mongodb</label></li>
+                <li><input type="checkbox" id="dynamic"> <label for="dynamic">API Development with prisma ORM and
+                        postgres</label></li>
+                <li><input type="checkbox" id="course-ui"> <label for="course-ui">API Development with prisma and
+                        mongodb part 2</label></li>
+                <li><input type="checkbox" id="prisma"> <label for="prisma">API Development with prisma and
+                        postgres part 2</label></li>
+                <li><input type="checkbox" id="course-api"> <label for="course-api">Concluding Course</label>
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <a href="../playlist.html" class="back-link" style="color: #ABF0B3;">Back to courses</a>
+            <h1>Prism Schema & Clients</h1>
+            <div class="placeholder-image">
+                <!-- YouTube iframe will be injected here -->
+                <div id="video-container" style="width: 100%; height: 100%;"></div>
+            </div>
+            <h2>Lecture 2</h2>
+            <button class="complete-btn">Complete and continue</button>
+            <button class="add-btn" onclick="window.location.href='../upload/popup.html'">Add Video</button>
+            <button class="prev-btn">Previous Lecture</button>
+        </div>
+        <div class="todo">
+            <h2>Make Notes</h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add your note">
+                <button onclick="addNote()">Add Note</button>
+            </div>
+            <ul id="tasks">
+                <!-- Notes will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        let player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('video-container', {
+                height: '500',
+                width: '600',
+                videoId: 'TTPCZ7k_Oug', // Replace with your YouTube video ID
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Player ready callback
+        }
+
+        function addNote() {
+            const noteText = document.getElementById('input-box').value;
+            if (noteText.trim() === '') return;
+            const timestamp = player.getCurrentTime();
+            createNoteElement(noteText, timestamp);
+            document.getElementById('input-box').value = '';
+        }
+
+        function createNoteElement(noteText, timestamp) {
+            const noteDiv = document.createElement('div');
+            noteDiv.className = 'mb-4';
+            noteDiv.innerHTML = `
+                <div class="note-timestamp" data-timestamp="${timestamp}">
+                    ${timestamp.toFixed(2)}
+                </div>
+                <p>${noteText}</p>
+            `;
+            noteDiv.querySelector('.note-timestamp').addEventListener('click', (e) => {
+                const timestamp = e.currentTarget.dataset.timestamp;
+                player.seekTo(timestamp);
+                player.playVideo();
+            });
+            document.getElementById('tasks').appendChild(noteDiv);
+        }
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const progressText = document.querySelector('.progress');
+
+            function updateProgress() {
+                const totalItems = checkboxes.length;
+                const checkedItems = document.querySelectorAll('input[type="checkbox"]:checked').length;
+                const progressPercentage = Math.round((checkedItems / totalItems) * 100);
+                progressText.textContent = `${progressPercentage}% Complete`;
+            }
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateProgress);
+            });
+
+            updateProgress();
+
+            const completeButton = document.querySelector('.complete-btn');
+            const prevButton = document.querySelector('.prev-btn');
+            completeButton.addEventListener('click', function () {
+                alert('Section completed!');
+                window.location.href = 'video3.html';
+                // Add functionality to move to the next section here
+            });
+            prevButton.addEventListener('click', function () {
+                window.location.href = 'video1.html';
+            });
+        });
+
+    </script>
+</body>
+
+</html>

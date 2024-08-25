@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <title>Note Taking with Video</title>
+  <style>
+    body {
+      color: white;
+    }
+    #noteInput {
+      color: black;
+    }
+
+    @layer base {
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 240 10% 3.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 3.9%;
+        --primary: 240 5.9% 10%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 240 4.8% 95.9%;
+        --secondary-foreground: 240 5.9% 10%;
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+        --accent: 240 4.8% 95.9%;
+        --accent-foreground: 240 5.9% 10%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --ring: 240 5.9% 10%;
+        --radius: 0.5rem;
+      }
+      .dark {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 0 0% 98%;
+        --primary-foreground: 240 5.9% 10%;
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 240 4.9% 83.9%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-card text-card-foreground p-4 rounded-lg shadow-md max-w-md mx-auto my-5" style="background-color: #172628;">
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center space-x-2">
+        <img src="https://placehold.co/40x40?text=VN" alt="VN logo" class="w-10 h-10 rounded-full">
+        <span id="videoTitle" class="text-xl font-semibold truncate w-41"></span>
+      </div>
+      <button id="shareBtn" class="bg-muted p-4 rounded-full">
+        <img src="https://openui.fly.dev/openui/32x32.svg?text=🔗" alt="share icon">
+      </button>
+    </div>
+
+    <div class="mb-4">
+      <div class="relative">
+        <div id="player"></div>
+        <div class="absolute top-2 right-2 flex space-x-2">
+          <button id="screenshotBtn" class="bg-muted p-2 rounded-full">
+            <img src="https://openui.fly.dev/openui/24x24.svg?text=📸" alt="screenshot button">
+          </button>
+        </div>
+      </div>
+      <div id="screenshotContainer" class="mt-4"></div>
+    </div>
+
+    <div class="flex items-center space-x-2 p-2 border-t border-muted">
+      <input type="text" id="noteInput" placeholder="Add a note" class="flex-1 p-2 bg-input border border-muted rounded-lg">
+      <button id="addNoteBtn" class="bg-muted p-2 rounded-full">
+        <img src="https://openui.fly.dev/openui/24x24.svg?text=➕" alt="add note icon">
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let player;
+    const serverUrl = 'http://localhost:3000'; // Backend server URL
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '390',
+        width: '410',
+        videoId: '2JFMhL-9tys', // Replace with your YouTube video ID
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      document.getElementById('screenshotBtn').addEventListener('click', captureScreenshot);
+      document.getElementById('addNoteBtn').addEventListener('click', () => {
+        const noteText = document.getElementById('noteInput').value;
+        if (noteText.trim() === '') return;
+        createNoteElement(noteText, player.getCurrentTime());
+        document.getElementById('noteInput').value = '';
+      });
+
+      const videoTitle = player.getVideoData().title;
+      const truncatedTitle = videoTitle.length > 25 ? videoTitle.substring(0, 30) + '...' : videoTitle;
+      document.getElementById('videoTitle').textContent = truncatedTitle;
+
+      document.getElementById('shareBtn').addEventListener('click', () => {
+        const videoUrl = `https://www.youtube.com/watch?v=${player.getVideoData().video_id}`;
+        navigator.clipboard.writeText(videoUrl)
+          .then(() => {
+            alert('Video URL copied to clipboard!');
+          })
+          .catch(err => {
+            console.error('Failed to copy: ', err);
+          });
+      });
+    }
+
+    async function captureScreenshot() {
+      const currentTime = player.getCurrentTime();
+      const response = await fetch(`${serverUrl}/screenshot?videoId=2JFMhL-9tys&timestamp=${Math.floor(currentTime)}`);
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+
+        const img = document.createElement('img');
+        img.src = url;
+        img.className = 'w-full rounded-lg mt-4';
+        const timestampDiv = document.createElement('div');
+        timestampDiv.className = 'text-muted-foreground mt-2';
+        timestampDiv.textContent = `Screenshot taken at ${currentTime.toFixed(2)} seconds`;
+        const screenshotWrapper = document.createElement('div');
+        screenshotWrapper.className = 'mb-4';
+        screenshotWrapper.appendChild(img);
+        screenshotWrapper.appendChild(timestampDiv);
+        document.getElementById('screenshotContainer').appendChild(screenshotWrapper);
+        createNoteElement('Screenshot', currentTime, img.src);
+      } else {
+        console.error('Failed to capture screenshot');
+      }
+    }
+
+    function createNoteElement(noteText, timestamp, imgSrc = null) {
+      const noteDiv = document.createElement('div');
+      noteDiv.className = 'mb-4';
+      noteDiv.innerHTML = `
+        <div class="flex items-center space-x-2 text-muted-foreground cursor-pointer" data-timestamp="${timestamp}">
+          <img src="https://openui.fly.dev/openui/16x16.svg?text=▶️" alt="play icon">
+          <span>${timestamp.toFixed(2)}</span>
+        </div>
+        <p class="text-lg">${noteText}</p>
+      `;
+      if (imgSrc) {
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.className = 'w-full rounded-lg mt-4';
+        noteDiv.appendChild(img);
+      }
+      noteDiv.addEventListener('click', (e) => {
+        const timestamp = e.currentTarget.querySelector('[data-timestamp]').dataset.timestamp;
+        player.seekTo(timestamp);
+        player.playVideo();
+      });
+      document.getElementById('screenshotContainer').appendChild(noteDiv);
+    }
+
+    // Load the IFrame Player API code asynchronously.
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  </script>
+</body>
+</html>

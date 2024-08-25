@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduflex - Learning made easy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container" id="mainContent">
+        <aside style="border: 2px solid #000; border-radius: 5px;" id="asideMenu">
+            <h1>CollabSphere</h1>
+            <p>LEARNING MADE EASY</p>
+
+            <!-- ASIDE MENU -->
+
+            <nav>
+                <!-- <ul style="list-style-type: none;"> -->
+                <ul>
+                    <!-- <li><a style="border-radius:10px; color:#1BE09E; text-decoration: none;"
+                            onmouseover="this.style.color='#000'; this.style.backgroundColor='#F44878'; this.style.fontSize='20px';"
+                            onmouseout="this.style.color='#1BE09E'; this.style.backgroundColor='transparent'; this.style.fontSize='16px';"
+                            href="striver.html">Landing</a></li>
+                    <li><a style="border-radius:10px; color:#1BE09E; text-decoration: none;"
+                            onmouseover="this.style.color='#000'; this.style.backgroundColor='#F44878'; this.style.fontSize='20px';"
+                            onmouseout="this.style.color='#1BE09E'; this.style.backgroundColor='transparent'; this.style.fontSize='16px';"
+                            href="strivercolored.html">Colored</a></li>
+                    <li><a style="border-radius:10px; color:#1BE09E; text-decoration: none;"
+                            onmouseover="this.style.color='#000'; this.style.backgroundColor='#F44878'; this.style.fontSize='20px';"
+                            onmouseout="this.style.color='#1BE09E'; this.style.backgroundColor='transparent'; this.style.fontSize='16px';"
+                            href="#">Leaderboard</a></li>
+                    <li><a style="border-radius:10px; color:#1BE09E; text-decoration: none;"
+                            onmouseover="this.style.color='#000'; this.style.backgroundColor='#F44878'; this.style.fontSize='20px';"
+                            onmouseout="this.style.color='#1BE09E'; this.style.backgroundColor='transparent'; this.style.fontSize='16px';"
+                            href="Notetaking/index.html">Newsletter</a></li>
+                    <li><a style="border-radius:10px; color:#1BE09E; text-decoration: none;"
+                            onmouseover="this.style.color='#000'; this.style.backgroundColor='#F44878'; this.style.fontSize='20px';"
+                            onmouseout="this.style.color='#1BE09E'; this.style.backgroundColor='transparent'; this.style.fontSize='16px';"
+                            href="/OnVideo/OnVideo.html">OnVideo</a></li> -->
+                    <li><a href="index.html"><i class="icon">🏠</i> Home</a></li>
+                 
+                    <li><a href="/profile/profile.html"><i class="icon">🕒</i> Profile</a></li>
+                    <li><a href="./tip/index.html" id="createPlaylistLink"><i class="icon">📺</i> Create Project</a></li>
+    
+                    <li><a href="https://www.linkedin.com/in/eduflex-pvt-ltd-4bb372319/"><i class="icon">📷</i>
+                            Linkedin</a></li>
+                    <li><a href="#"><i class="icon">🌟</i> Twitter</a></li>
+                    <li><a href="#" onclick="setLogAndRefresh()"><i class="icon">❌</i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <button id="menuToggle">☰</button>
+            <header>
+                <h1 class="word">Learning Made Easy - CollabSphere</h1>
+
+                <div class="landing-page" style="display: flex; justify-content: space-between;">
+                    <input type="search" placeholder="Search for a Project"
+                        style=" border: 1px solid green; border-radius: 7px;">
+
+                    <!-- login / signup button -->
+
+                    <button id="openPopupBtn" style="margin-left: 2px; background-color: lightgreen; 
+ border: 1px solid green; border-radius: 10px;">Login/Signup</button>
+
+                    <!-- profile pic  -->
+
+                    <img id="profilepic" alt="user-icon" src="https://openui.fly.dev/openui/24x24.svg?text=👤"
+                        style="display:none">
+
+                </div>
+            </header>
+
+
+            <!-- NAVBAR -->
+            <nav id="courseNav">
+                <ul style="padding: 10px;">
+                    <li><a style="color:#ABF0B3;" onmouseover="this.style.color='#EEDC9F'"
+                            onmouseout="this.style.color='#ABF0B3'" href="#" class="active">All</a>
+                    </li>
+                    <li><a style="color:#ABF0B3;" onmouseover="this.style.color='#EEDC9F'"
+                            onmouseout="this.style.color='#ABF0B3'" href="#">Next.js</a></li>
+                    <li><a style="color:#ABF0B3;" onmouseover="this.style.color='##EEDC9F'"
+                            onmouseout="this.style.color='#ABF0B3'" href="#">React.js</a></li>
+                    <li><a style="color:#ABF0B3;" onmouseover="this.style.color='#EEDC9F'"
+                            onmouseout="this.style.color='#ABF0B3'" href="#">MySQL</a></li>
+                    <li><a style="color:#ABF0B3;" onmouseover="this.style.color='#EEDC9F'"
+                            onmouseout="this.style.color='#ABF0B3'" href="#">MongoDB</a></li>
+                    <li><a style="color:#ABF0B3;" onmouseover="this.style.color='#EEDC9F'"
+                            onmouseout="this.style.color='#ABF0B3'" href="#">Prisma</a></li>
+                    <li><a style="color:#ABF0B3;" onmouseover="this.style.color='#EEDC9F'"
+                            onmouseout="this.style.color='#ABF0B3'" href="#">Tailwind</a></li>
+                    <li><a style="color:#ABF0B3;" onmouseover="this.style.color='#EEDC9F'"
+                            onmouseout="this.style.color='#ABF0B3'" href="#">Node.js</a></li>
+                    <li><a style="color:#ABF0B3;" onmouseover="this.style.color='#EEDC9F'"
+                            onmouseout="this.style.color='#ABF0B3'" href="#">Supabase</a></li>
+                </ul>
+            </nav>
+
+
+            <!-- content will be shown depending on user's id and his created playlist-->
+            <div id="courseGrid"></div>
+        </main>
+    </div>
+
+    <!-- popup sign in box (will be completed later on) -->
+
+    <div id="popupBox" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closePopupBtn">&times;</span>
+            <h2>Login / Signup</h2>
+            <form>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <!-- Login Button type changes from submit to button type for video purposes, will be changed later on -->
+
+                <div class="form-group">
+                    <button type="button" id="log"
+                        style="background-color: green; color: #fff; border: none; padding: 10px 20px">Login</button>
+                </div>
+
+                <!-- No functionality of signup till now just a showpiece-->
+
+                <div class="form-group">
+                    <button type="button">Signup</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Experiment 1 -->
+    <div id="overlay"></div>
+
+    <div id="formPopup" style="border: 1px solid black; border-radius:30px; background-color: #0F0F10">
+        <h2>Create Playlist</h2>
+        <form id="createPlaylistForm">
+            <label for="courseName">Course Name:</label>
+            <input type="text" id="courseName" name="courseName" required>
+
+            <label for="lectures">Number of Lectures:</label>
+            <input type="number" id="lectures" name="lectures" required>
+
+            <button type="submit" class="btn-add" style="background-color:green">Add Playlist</button>
+            <button type="button" class="btn-cancel" id="closePopup">Cancel</button>
+        </form>
+    </div>
+
+    <!-- experiment 2 -->
+
+    <button id="openChatBtn" onclick="window.location.href='chatbot.html'">Chat with us!</button>
+
+
+
+    <footer>
+        <p>Copyright &copy; 2024 CollabSphere | All rights reserved</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

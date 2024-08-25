@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+    <script type="text/javascript">
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        gray: {
+                            900: '#000000',
+                            800: '#1f1f1f',
+                            700: '#2e2e2e',
+                            600: '#313131',
+                            500: '#969593',
+                            400: '#a6a6a6',
+                            300: '#bdbbb7',
+                            200: '#f1f1f1',
+                            100: '#ffffff',
+                        },
+                        green: {
+                            500: '#45ffbc',
+                        },
+                        olive: {
+                            500: '#e3ffa8',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="blogs.css">
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 240 10% 3.9%;
+                --foreground: 200 100% 99%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 200 100% 99%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 200 100% 99%;
+                --primary: 144 100% 70%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 88 100% 85%;
+                --secondary-foreground: 240 10% 3.9%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 10% 3.9%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 200 100% 99%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 200 100% 99%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 200 100% 99%;
+                --primary: 200 100% 99%;
+                --primary-foreground: 144 100% 70%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 200 100% 99%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 200 100% 99%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 200 100% 99%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="min-h-screen bg-gray-900 text-c-gray-200 flex">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 w-64 p-4 flex-shrink-0">
+            <h2 class="text-xl font-bold text-green-500 mb-4">Eduflex</h2>
+            <nav>
+                <ul class="space-y-2">
+                    <div class="app-body">
+                        <div class="app-body-navigation">
+                            <nav class="navigation">
+                                <a href="#"
+                                    class="block py-2 px-3 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+                                    <i class="ph-browsers"></i>
+                                    <span class="ml-2">Dashboard</span>
+                                </a>
+                                <a href="#"
+                                    class="block py-2 px-3 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+                                    <i class="ph-check-square"></i>
+                                    <span class="ml-2">Saved Notes</span>
+                                </a>
+                                <a href="#"
+                                    class="block py-2 px-3 text-gray-400 bg-gray-700 text-white rounded transition">
+                                    <i class="ph-browsers"></i>
+                                    <span class="ml-2">Blogs</span>
+                                </a>
+                                <a href="#"
+                                    class="block py-2 px-3 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+                                    <i class="ph-swap"></i>
+                                    <span class="ml-2">Contact</span>
+                                </a>
+                                <a href="#"
+                                    class="block py-2 px-3 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+                                    <i class="ph-file-text"></i>
+                                    <span class="ml-2">Terms of Service</span>
+                                </a>
+                                <a href="#"
+                                    class="block py-2 px-3 text-gray-400 hover:bg-gray-700 hover:text-white rounded transition">
+                                    <i class="ph-globe"></i>
+                                    <span class="ml-2">Privacy Policy</span>
+                                </a>
+                            </nav>
+                            <footer class="footer mt-8">
+                                <h1 class="text-lg font-bold text-green-500">Eduflex<small>©</small></h1>
+                                <div class="text-gray-400 mt-2">
+                                    All Rights Reserved 2024
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        <!-- Main content -->
+        <div class="flex-1 p-4">
+            <div class="flex justify-between items-center mb-4">
+                <input type="text" placeholder="Search Topic..."
+                    class="bg-gray-800 text-c-gray-200 placeholder-gray-500 p-2 rounded-md w-1/3" />
+                <button class="bg-green-500 text-gray-900 px-4 py-2 rounded-md">Login</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-green-500">Arrays</h2>
+                    <p class="text-gray-400">Fundamental data structure for storing elements of the same type.</p>
+                    <a href="https://www.geeksforgeeks.org/array-data-structure-guide/"
+                        class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🌈" alt="decorative icon" />
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-olive-500">Introduction to DSA</h2>
+                    <p class="text-gray-400">Primer on Data Structures and Algorithms.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🍑" alt="decorative icon" />
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-green-500">Queue</h2>
+                    <p class="text-gray-400">First-in, First-out data structure for managing elements.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🐬" alt="decorative icon" />
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-green-500">Queue</h2>
+                    <p class="text-gray-400">First-in, First-out data structure for managing elements.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🐬" alt="decorative icon" />
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-olive-500">ArrayList</h2>
+                    <p class="text-gray-400">Dynamic array that can grow as needed.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🍓" alt="decorative icon" />
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-olive-500">ArrayList</h2>
+                    <p class="text-gray-400">Dynamic array that can grow as needed.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🍓" alt="decorative icon" />
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-olive-500">ArrayList</h2>
+                    <p class="text-gray-400">Dynamic array that can grow as needed.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🍓" alt="decorative icon" />
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-olive-500">ArrayList</h2>
+                    <p class="text-gray-400">Dynamic array that can grow as needed.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🍓" alt="decorative icon" />
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-olive-500">ArrayList</h2>
+                    <p class="text-gray-400">Dynamic array that can grow as needed.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🍓" alt="decorative icon" />
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-green-500">LinkedList</h2>
+                    <p class="text-gray-400">Linear data structure with nodes pointing to the next node.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🌻" alt="decorative icon" />
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-green-500">LinkedList</h2>
+                    <p class="text-gray-400">Linear data structure with nodes pointing to the next node.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=🌻" alt="decorative icon" />
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-c-gray-200 p-4 rounded-lg border border-gray-700 relative">
+                    <h2 class="text-xl font-bold text-olive-500">Recursion</h2>
+                    <p class="text-gray-400">Technique where a function calls itself to solve a problem.</p>
+                    <a href="#" class="text-c-gray-100 mt-2 inline-block">View all &rarr;</a>
+                    <div class="absolute bottom-4 right-4">
+                        <img src="https://openui.fly.dev/openui/50x50.svg?text=💡" alt="decorative icon" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>
